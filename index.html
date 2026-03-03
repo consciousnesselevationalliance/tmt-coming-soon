@@ -8,31 +8,32 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-  body {
+  html, body {
     margin: 0;
+    padding: 0;
     background: #000;
     color: #e5e7eb;
     font-family: 'IBM Plex Mono', monospace;
-  
-    display: flex;
-    justify-content: center;
-  
-    min-height: 100svh; /* Modern viewport unit */
-    padding: 40px 20px; /* Add breathing room */
   }
 
-  @supports (-webkit-touch-callout: none) {
-    body {
-      min-height: -webkit-fill-available;
-    }
+  /* Mobile-safe viewport wrapper */
+  .page {
+    min-height: 100dvh; /* dynamic viewport height (fixes iOS Safari) */
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+    box-sizing: border-box;
   }
+
   .container {
     max-width: 720px;
+    width: 100%;
     padding: 40px;
     border-radius: 20px;
     border: 1px solid rgba(139, 92, 246, 0.4);
     background: rgba(0, 0, 0, 0.6);
     box-shadow: 0 0 60px rgba(139, 92, 246, 0.25);
+    box-sizing: border-box;
   }
 
   h1 {
@@ -52,39 +53,24 @@
     margin-bottom: 40px;
   }
 
-  form {
+  .cta-wrapper {
     display: flex;
+    justify-content: center;
     gap: 12px;
     flex-wrap: wrap;
   }
 
-  input[type="email"] {
-    flex: 1;
-    padding: 14px;
-    background: #000;
-    border: 1px solid rgba(139, 92, 246, 0.4);
-    border-radius: 8px;
-    color: white;
-    font-size: 14px;
-  }
-
-  input[type="email"]:focus {
-    outline: none;
-    border-color: #8b5cf6;
-  }
-
-  button {
+  .cta-button {
     padding: 14px 22px;
     background: #8b5cf6;
-    border: none;
     border-radius: 8px;
     color: white;
+    text-decoration: none;
     font-weight: 500;
-    cursor: pointer;
     transition: 0.2s ease;
   }
 
-  button:hover {
+  .cta-button:hover {
     background: #7c3aed;
   }
 
@@ -102,37 +88,57 @@
     0%, 50%, 100% { opacity: 1; }
     25%, 75% { opacity: 0; }
   }
+
+  /* Responsive font adjustment */
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 34px;
+    }
+
+    .container {
+      padding: 28px;
+    }
+  }
+
+  /* Extra Safari safety */
+  @supports (-webkit-touch-callout: none) {
+    .page {
+      min-height: -webkit-fill-available;
+    }
+  }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="page">
+  <div class="container">
 
-  <h1>&gt;_ ThinkMyThought<span class="cursor">|</span></h1>
+    <h1>&gt;_ ThinkMyThought<span class="cursor">|</span></h1>
 
-  <div class="tagline">
-    Recenter · Think clearly · Share protected ideas
+    <div class="tagline">
+      Recenter · Think clearly · Share protected ideas
+    </div>
+
+    <div class="sub">
+      Launching soon. Publish timestamped ideas and invite aligned collaborators.
+    </div>
+
+    <div class="cta-wrapper">
+      <a 
+        href="https://docs.google.com/forms/d/e/1FAIpQLSehWzH2MtpFh5lKI_5cXyWVTKaZggDwBN5LE76YoO-Uet309w/viewform" 
+        target="_blank"
+        class="cta-button"
+      >
+        Request Early Access
+      </a>
+    </div>
+
+    <div class="footer">
+      © 2026 Consciousness Elevation Alliance
+    </div>
+
   </div>
-
-  <div class="sub">
-    Launching soon. Publish timestamped ideas and invite aligned collaborators.
-  </div>
-
-  <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
-    <a 
-      href="https://docs.google.com/forms/d/e/1FAIpQLSehWzH2MtpFh5lKI_5cXyWVTKaZggDwBN5LE76YoO-Uet309w/viewform" 
-      target="_blank"
-      style="padding:14px 22px; background:#8b5cf6; border-radius:8px; color:white; text-decoration:none; font-weight:500;"
-    >
-      Request Early Access
-    </a>
-  </div>
-
-  <div class="footer">
-    © 2026 Consciousness Elevation Alliance
-  </div>
-
 </div>
 
 </body>
