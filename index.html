@@ -13,12 +13,19 @@
     background: #000;
     color: #e5e7eb;
     font-family: 'IBM Plex Mono', monospace;
+  
     display: flex;
-    align-items: center;
     justify-content: center;
-    min-height: 100vh;
+  
+    min-height: 100svh; /* Modern viewport unit */
+    padding: 40px 20px; /* Add breathing room */
   }
 
+  @supports (-webkit-touch-callout: none) {
+    body {
+      min-height: -webkit-fill-available;
+    }
+  }
   .container {
     max-width: 720px;
     padding: 40px;
