@@ -1,136 +1,358 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ThinkMyThought — Coming Soon</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ThinkMyThought — Coming Soon</title>
+<meta name="description" content="ThinkMyThought — a new way to understand the patterns shaping your life. Join early access." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #000000;
+    --text: #f4f1ea;
+    --text-soft: rgba(244, 241, 234, 0.62);
+    --gold: #d4af6e;                          /* muted elegant brand gold — single source of truth */
+    --gold-soft: rgba(212, 175, 110, 0.85);
+    --gold-glow: rgba(212, 175, 110, 0.35);
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
 
-  <!-- Basic SEO -->
-  <meta name="description" content="ThinkMyThought — An upcoming platform for thinkers, innovators, and visionaries. Invitations will be sent after official launch." />
-  <meta name="robots" content="index,follow" />
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  <!-- Social share -->
-  <meta property="og:title" content="ThinkMyThought — Coming Soon" />
-  <meta property="og:description" content="Early access is limited to the first 50 — by invitation only." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://i.postimg.cc/BbwH3PB2/TMT.png" /> <!-- Optional: add absolute URL to a preview image -->
-  <meta property="og:image:alt" content="Image of ThinkMyThought">
-  <meta property="og:url" content="" />
+  /* Lock to a single, non-scrolling viewport */
+  html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    overflow-x: hidden;
+    max-width: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ThinkMyThought — Coming Soon" />
-  <meta name="twitter:description" content="Early access is limited to the first 50 — by invitation only." />
-  <meta name="twitter:image" content="https://i.postimg.cc/Dyv9Dktw/Screen-Shot-2025-10-17-at-4-51-53-PM-Medium.jpg" />
+  body {
+    /* subtle gold depth: warm glow from top-center + a fainter pool from the bottom */
+    background:
+      radial-gradient(100% 70% at 50% 0%, rgba(212, 175, 110, 0.12) 0%, transparent 65%),
+      radial-gradient(85% 60% at 50% 100%, rgba(212, 175, 110, 0.07) 0%, transparent 62%),
+      #080608;
+  }
 
-  <style>
-    :root{
-      --bg1:#b157ff; --bg2:rgb(88, 48, 149); --text:#f6f7fb; --muted:#c8d1dc; --btn:#ffffff; --btnText:#0d1723; --btnHover:#e6e9ef;
-    }
-    *{box-sizing:border-box
-    }
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      /*font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";*/
-      color:var(--text);
-      background: radial-gradient(1200px 800px at 20% 10%, #523c7b 0%, rgba(47, 12, 81, 0.666) 60%),
-                  linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
-      display:flex; align-items:center; justify-content:center;
-    }
-    .container{
-      width:100%; max-width:980px; padding:24px;
-    }
-    .card{
-      padding: clamp(28px, 6vw, 56px);
-      border-radius: 20px;
-      background: rgba(37, 12, 69, 0.572);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(94, 94, 94, 0.278);
-      box-shadow: 0 0 15px #6cc7ebc7;
-      text-align:center;
-      position: relative;
-      z-index: 1;
-    }
-    h1{
-      margin:0 0 14px; font-size: clamp(34px, 6vw, 64px); line-height:1.1; letter-spacing:-0.02em;
-    }
-    p.lead{
-      margin:10px auto 18px; max-width: 44ch; font-size: clamp(16px, 2.5vw, 20px); color:var(--muted);
-    }
-    .divider{
-      width: 80px; height:1px; background: rgba(255,255,255,0.2);
-      margin: 16px auto 20px;
-    }
-    .cta{
-      display:inline-block;
-      padding:14px 22px;
-      border-radius: 12px;
-      color: rgb(52, 1, 92);
-      background: rgba(231, 193, 2, 0.957);
-      border: solid 0.5px rgba(255, 255, 255, 0.366);
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform .08s ease, background .2s ease, box-shadow .2s ease;
-    }
-    .cta:hover{ transform: translateY(-1px); color: rgb(255, 255, 255); filter: brightness(1.12) }
-    .cta:active{ transform: translateY(0) }
+  /* Single full-height stage — every movement is overlaid inside this. */
+  .viewport {
+    position: relative;
+    width: 100%;
+    height: 100dvh;        /* dvh handles mobile browser chrome */
+    overflow: hidden;      /* glow/blur must not expand layout */
+    background: transparent; /* let the body gold gradient show through */
+  }
 
-    .foot{
-      margin-top:24px; font-size:14px; color:var(--muted);
-    }
-    .foot a{ color:#cfe3ff; text-decoration:none }
-    .foot a:hover{ text-decoration:underline }
+  /* Each movement is an absolutely-positioned, centered layer. */
+  .layer {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8vh 7vw;
+    background: transparent; /* let the body gold gradient show through */
+  }
 
-    /* Accessibility prefers-reduced-motion */
-    @media (prefers-reduced-motion:no-preference){
-      .glow{
-        position: absolute; inset: 0; overflow: hidden; pointer-events:none;
-      }
-      .glow::before{
-        content:""; position:absolute; width:800px; height:800px; border-radius:50%;
-        background: radial-gradient(closest-side, rgba(43, 19, 100, 0.704), rgba(93, 66, 139, 0.648));
-        top:-110px; right:-110px; filter: blur(50px);
-        animation: float 12s ease-in-out infinite alternate;
+  /* fade-controlled layers */
+  .fade {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.6s var(--ease), visibility 1.6s var(--ease);
+    will-change: opacity;
+  }
+  .fade.in { opacity: 1; visibility: visible; }
 
-      }
-      @keyframes float{
-        0%{ transform: translateY(0) translateX(0) }
-        100%{ transform: translateY(20px) translateX(-20px) }
-      }
-    }
-    .gradient-text {
-        background: linear-gradient(90deg, rgb(44, 206, 255), #ea85fc); 
-        -webkit-background-clip: text;  
-        -webkit-text-fill-color: transparent; 
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.392);
-        padding: 5px;
-    }
+  .label {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    font-size: clamp(0.6rem, 1.6vw, 0.75rem);
+    color: var(--gold);
+    text-shadow: 0 0 18px var(--gold-glow);
+  }
 
-  </style>
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-block;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: clamp(0.72rem, 1.8vw, 0.85rem);
+    color: #0c0a05;
+    background: linear-gradient(135deg, #e2c692 0%, var(--gold) 55%, #b08d4f 100%);
+    padding: 1.05em 2.6em;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+    will-change: transform;
+  }
+  .btn:hover, .btn:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 40px var(--gold-glow), 0 0 22px rgba(212, 175, 110, 0.25);
+    outline: none;
+  }
+  .btn:focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; }
+  /* medium button for the intro */
+  .btn--md { padding: 0.85em 2.1em; font-size: clamp(0.66rem, 1.6vw, 0.78rem); }
+
+  /* ---------- Cinematic sequence ---------- */
+  .stage {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    min-height: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .line {
+    position: absolute;
+    left: 0; right: 0;
+    margin: 0 auto;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    opacity: 0;
+    filter: blur(14px);
+    transform: translateY(10px) scale(0.99);
+    transition:
+      opacity 2.2s var(--ease),
+      filter 2.2s var(--ease),
+      transform 2.2s var(--ease);
+    will-change: opacity, filter, transform;
+    pointer-events: none;
+  }
+  .line.show { opacity: 1; filter: blur(0); transform: none; }
+
+  /* Prompt & closing lines stay narrow for readability; the title is free. */
+  .prompt, .closer {
+    max-width: 22ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .prompt {
+    font-size: clamp(1.5rem, 5.4vw, 3rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--text);
+  }
+
+  .brand {
+    font-size: clamp(2rem, 9vw, 7rem);
+    font-weight: 400;            /* light, not bold */
+    letter-spacing: 0.015em;
+    line-height: 1.05;
+    white-space: nowrap;
+    max-width: 100%;
+    /* no glow */
+  }
+  .brand-gold {
+    color: var(--gold);
+    /* soft layered halo: tight inner glow + wider gentle bloom — text-shadow never affects layout */
+    text-shadow:
+      0 0 14px var(--gold-glow),
+      0 0 48px rgba(212, 175, 110, 0.22);
+  }
+  .brand-my {
+    color: #8a7146;             /* muted gold */
+    font-style: italic;
+    font-weight: 300;
+    text-shadow:
+      0 0 14px rgba(138, 113, 70, 0.32),
+      0 0 48px rgba(138, 113, 70, 0.18);
+  }
+
+  .closer {
+    font-size: clamp(1.4rem, 4.8vw, 2.7rem);
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--text);
+  }
+  .culmination { color: var(--gold); text-shadow: 0 0 30px var(--gold-glow); }
+
+  /* ---------- Final CTA ---------- */
+  #outro .brand-small {
+    font-size: clamp(1.1rem, 3.2vw, 1.6rem);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-shadow: 0 0 24px var(--gold-glow);
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+  #outro h2 {
+    font-size: clamp(1.8rem, 5.5vw, 3rem);
+    font-weight: 400;
+    margin-bottom: 2.2rem;
+    max-width: 18ch;
+  }
+  #outro .subtext {
+    margin-top: 2.4rem;
+    max-width: 32ch;
+    color: var(--text-soft);
+    font-size: clamp(1.05rem, 3vw, 1.35rem);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .gold-rule {
+    width: 1px;
+    height: 56px;
+    background: linear-gradient(to bottom, transparent, var(--gold-soft), transparent);
+    margin: 0 auto 2rem;
+    opacity: 0.6;
+  }
+
+  /* ---------- Skip control ---------- */
+  .skip-btn {
+    /* centered horizontally, a short distance below the line area */
+    position: absolute;
+    left: 50%;
+    top: 64%;
+    transform: translateX(-50%);
+    z-index: 10;                 /* above the layers */
+    /* generous tap target, low-key look */
+    padding: 0.75rem 1.4rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s var(--ease), visibility 0.6s var(--ease), color 0.3s var(--ease);
+  }
+  .skip-btn.show { opacity: 1; visibility: visible; }
+  .skip-btn:hover,
+  .skip-btn:focus-visible { color: var(--gold); outline: none; }
+  .skip-btn:focus-visible { outline: 1px solid var(--gold); outline-offset: 3px; }
+
+  /* ---------- Reduced motion: one static, composed screen ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    /* Collapse to the resolved CTA. */
+    #sequence { display: none; }
+    #outro.fade { opacity: 1; visibility: visible; transition: none; }
+    #outro .brand-small { font-size: clamp(1.6rem, 7vw, 3rem); margin-bottom: 1.6rem; }
+  }
+</style>
 </head>
 <body>
-  <div class="glow" aria-hidden="true"></div>
-  <main class="container">
-    <section class="card" role="region" aria-label="Coming soon announcement">
-      <h1 class="gradient-text">ThinkMyThought</h1>
-      <p class="lead"><em>A coherent space for thinkers, innovators, and visionaries.</em></p>
-      <p class="lead">Welcome concious creators.</p>
-      <div class="divider" aria-hidden="true"></div>
-      <p class="lead"><strong>Coming soon — receive this potential.</strong></p>
+<div class="viewport">
 
-      <!-- Replace the href below with your Google Form link -->
-      <p style="margin-top:18px">
-        <!--<a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSehWzH2MtpFh5lKI_5cXyWVTKaZggDwBN5LE76YoO-Uet309w/viewform" -->
-            <a class="cta" href="https://forms.gle/6zV71tjEDRGp7ACj6"
-          target="_blank" rel="noopener">
-          Join Launch Notification List</a>
-      </p>
-      <p class="foot">
-        ThinkMyThought is currently in pre-launch. No services are being offered at this time.
-      </p>
-    </section>
-  </main>
+  <!-- ================= CINEMATIC SEQUENCE ================= -->
+  <div class="layer fade" id="sequence" aria-label="An introduction to ThinkMyThought">
+    <div class="stage" id="stage">
+      <p class="line prompt">I get dissatisfied with every job I take…</p>
+      <p class="line prompt">My romantic relationships end in a similar way…</p>
+      <p class="line prompt">I know I need to change something but don't know what…</p>
+      <p class="line brand"><span class="brand-gold">Think</span><span class="brand-my">My</span><span class="brand-gold">Thought</span></p>
+      <p class="line closer">I bring clarity to the deeper layers behind your situation.</p>
+      <p class="line closer culmination">And help you change what keeps repeating.</p>
+    </div>
+    <!-- Explicit skip affordance — sits just below the line area, shown only while playing. -->
+    <button type="button" id="skip-btn" class="skip-btn" aria-label="Skip the intro">Skip</button>
+  </div>
+
+  <!-- ===================== FINAL CTA ===================== -->
+  <div class="layer fade" id="outro">
+    <span class="brand-small">ThinkMyThought</span>
+    <div class="gold-rule" aria-hidden="true"></div>
+    <h2>Join Early Access</h2>
+    <!-- Swap this placeholder for the real Google Form URL -->
+    <a class="btn" href="https://forms.gle/PLACEHOLDER" target="_blank" rel="noopener">Join Early Access</a>
+    <p class="subtext">A new way to understand the patterns shaping your life.</p>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var reduceMotion = window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Reduced motion: CSS already shows the resolved #outro screen. Nothing to play.
+  if (reduceMotion) return;
+
+  var sequence = document.getElementById("sequence");
+  var outro   = document.getElementById("outro");
+  var skipBtn = document.getElementById("skip-btn");
+  var lines = Array.prototype.slice.call(sequence.querySelectorAll(".line"));
+
+  // Per-line timing (ms): how long each line holds lit, and the dark gap after.
+  // Lines: 0-2 prompts, 3 brand, 4 clarity, 5 culmination. Tuned for ~24s total —
+  // prompts quick, a longer dark beat before the brand reveal, closers breathe.
+  var schedule = [
+    { hold: 2200, gap: 600 },  // prompt 1
+    { hold: 2200, gap: 600 },  // prompt 2
+    { hold: 2200, gap: 1400 }, // prompt 3 — longer dark pause before the brand
+    { hold: 2600, gap: 900 },  // BRAND
+    { hold: 2600, gap: 800 },  // clarity
+    { hold: 3400, gap: 500 }   // culmination, then resolve to CTA
+  ];
+
+  var FADE = 500;     // buffer matching the line fade-out
+  var timers = [];
+  var done = false;
+  var t = function (fn, ms) { timers.push(setTimeout(fn, ms)); };
+
+  function playLine(i) {
+    if (i >= lines.length) { resolveToOutro(); return; }
+    var el = lines[i], step = schedule[i] || { hold: 2200, gap: 800 };
+    el.classList.add("show");
+    t(function () {
+      el.classList.remove("show");
+      t(function () { playLine(i + 1); }, step.gap + FADE);
+    }, step.hold);
+  }
+
+  function resolveToOutro() {
+    if (done) return;
+    done = true;
+    timers.forEach(clearTimeout);
+    timers = [];
+    lines.forEach(function (el) { el.classList.remove("show"); });
+    sequence.classList.remove("in");
+    outro.classList.add("in");
+    if (skipBtn) skipBtn.classList.remove("show");
+    document.removeEventListener("click", skip);
+    document.removeEventListener("keydown", skip);
+  }
+
+  // Any tap or keypress jumps straight to the resolved CTA. No visible label.
+  function skip() { resolveToOutro(); }
+
+  function start() {
+    sequence.classList.add("in");
+    if (skipBtn) skipBtn.classList.add("show");
+    document.addEventListener("click", skip);
+    document.addEventListener("keydown", skip);
+    t(function () { playLine(0); }, 800);
+  }
+
+  // Single screen, no scroll — start once layout is ready.
+  if (document.readyState === "complete") {
+    t(start, 600);
+  } else {
+    window.addEventListener("load", function () { t(start, 600); });
+  }
+})();
+</script>
 </body>
 </html>
